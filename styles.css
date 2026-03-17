@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f0e8;
+  background-image:
+    linear-gradient(#c8d8e8 1px, transparent 1px),
+    linear-gradient(90deg, #c8d8e8 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+#gameContainer {
+  font-family: "Architects Daughter", cursive;
+  text-align: center;
+  padding: 40px 50px;
+  background: #fffef5;
+  border-radius: 4px;
+  box-shadow:
+    3px 3px 0px #d4c9a8,
+    6px 6px 0px #c9bea0,
+    2px 2px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0d8c0;
+  position: relative;
+}
+
+#gameContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 2px;
+  height: 100%;
+  background: #f4a0a0;
+  opacity: 0.6;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #3a3a5c;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #f4a0a0;
+}
+
+#statusText {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.1rem;
+  color: #5a5a8a;
+  margin: 16px 0;
+  min-height: 28px;
+}
+
+#cellContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
+  margin: 10px auto;
+  width: fit-content;
+  border-left: 3px solid #3a3a5c;
+  border-top: 3px solid #3a3a5c;
+}
+
+.cell {
+  width: 120px;
+  height: 120px;
+  border-right: 3px solid #3a3a5c;
+  border-bottom: 3px solid #3a3a5c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #3a3a5c;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.15s;
+  position: relative;
+}
+
+.cell:hover {
+  background: #fdf5c0;
+}
+
+#restartBtn {
+  margin-top: 24px;
+  padding: 10px 30px;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1rem;
+  background: #fffef5;
+  color: #3a3a5c;
+  border: 2px solid #3a3a5c;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #3a3a5c;
+  transition:
+    box-shadow 0.1s,
+    transform 0.1s;
+  letter-spacing: 1px;
+}
+
+#restartBtn:hover {
+  background: #fdf5c0;
+}
+
+#restartBtn:active {
+  box-shadow: 1px 1px 0px #3a3a5c;
+  transform: translate(2px, 2px);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px;
+}
+
+.selector {
+  background: #fffde7;
+  border: 2px solid #555;
+  border-radius: 3px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #aaa;
+  transform: rotate(-1deg);
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selector:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.selector:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 4px 4px 0 #888;
+  background: #fff9c4;
+}
+
+.selector:active {
+  transform: rotate(0deg) translateY(1px);
+  box-shadow: 1px 1px 0 #aaa;
+}
+
+.selector a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.fact-box {
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.new-fact-button {
+  margin-top: 24px;
+  padding: 10px 30px;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1rem;
+  background: #fffef5;
+  color: #3a3a5c;
+  border: 2px solid #3a3a5c;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #3a3a5c;
+  transition:
+    box-shadow 0.1s,
+    transform 0.1s;
+  letter-spacing: 1px;
+}
+
+.new-fact-button:hover {
+  background: #fdf5c0;
+}
+
+.new-fact-button:active {
+  box-shadow: 1px 1px 0px #3a3a5c;
+  transform: translate(2px, 2px);
+}
+
+.fact-text {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.1rem;
+  color: #5a5a8a;
+  margin: 16px 0;
+  min-height: 28px;
+}
+
+#fact-text {
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.5rem;
+  color: #5a5a8a;
+  margin: 16px 0;
+  min-height: 28px;
+}
+
+/* Home page: nav centered in the middle of the screen, bigger buttons */
+.home-nav {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+}
+
+.home-selector {
+  font-size: 1.3rem;
+  padding: 18px 40px;
+  width: 320px;
+}
+
+/* Game pages: body stacks nav on top, game in center below */
+body.page-with-nav {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+  gap: 30px;
+}
+#inputRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+#guessInput {
+  width: 80px;
+  padding: 8px;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1.2rem;
+  border: 2px solid #3a3a5c;
+  border-radius: 2px;
+  text-align: center;
+  background: #fffef5;
+  color: #3a3a5c;
+}
+
+#hint {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.4rem;
+  color: #5a5a8a;
+  min-height: 32px;
+  margin: 8px 0;
+}
+
+#inputRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+#guessInput {
+  width: 80px;
+  padding: 8px;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1.2rem;
+  border: 2px solid #3a3a5c;
+  border-radius: 2px;
+  text-align: center;
+  background: #fffef5;
+  color: #3a3a5c;
+}
+
+#guessBtn {
+  padding: 8px 20px;
+  font-family: "Architects Daughter", cursive;
+  font-size: 1rem;
+  background: #fffef5;
+  color: #3a3a5c;
+  border: 2px solid #3a3a5c;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #3a3a5c;
+  transition:
+    box-shadow 0.1s,
+    transform 0.1s;
+  letter-spacing: 1px;
+}
+
+#guessBtn:hover {
+  background: #fdf5c0;
+}
+
+#guessBtn:active {
+  box-shadow: 1px 1px 0px #3a3a5c;
+  transform: translate(2px, 2px);
+}
